@@ -7,8 +7,8 @@ include 'model/Impot.php';
 // à commenter si on utilise la V2
 $_POST = json_decode(
     /* file_get_contents : lit le fichier en tant que chaîne 
-    php://input : fichier temporaire contenant le corps de la requête POST 
-    */
+    php://input : fichier temporaire contenant le corps de la requête POST ; ce fichier est créé automatiquement à l'envoi d'une requête POST
+    et contient les données brutes de la requête avant qu'elles ne soient envoyées dans $_POST ou $_REQUEST */
     file_get_contents('php://input'),
     /* booléen : pour retourner un tableau associatif ou non */
     true
