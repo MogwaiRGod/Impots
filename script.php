@@ -5,7 +5,14 @@ include 'model/Impot.php';
 
 // on convertit l'objet JSON obtenu dans $_POST (inutilisable sinon)
 // à commenter si on utilise la V2
-$_POST = json_decode(file_get_contents('php://input'), true);
+$_POST = json_decode(
+    /* file_get_contents : lit le fichier en tant que chaîne 
+    php://input : fichier temporaire contenant le corps de la requête POST 
+    */
+    file_get_contents('php://input'),
+    /* booléen : pour retourner un tableau associatif ou non */
+    true
+);
 
 // création d'un objet impôt avec les valeurs des inputs dans $_POST
 $impot = new Impot($_POST['name'], $_POST['income']);
@@ -15,4 +22,3 @@ $msgMontant = $impot->afficheImpot();
 
 // puis affichage du message
 echo $msgMontant;
-
