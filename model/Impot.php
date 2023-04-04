@@ -4,11 +4,11 @@ class Impot {
     private $nom;
     private $revenu;
     private $taux;
-    
-    public const TAUXSUP = 0.2; /* 20 % */
-    public const TAUXINF = 0.15; /* 15 % */
 
     /* constantes de classe */
+    public const TAUXSUP = 0.2; /* 20 % */
+    public const TAUXINF = 0.15; /* 15 % */
+    
     public function __construct($nm, $rev) {
         $this->nom = $nm;
         $this->revenu = (int)$rev;
