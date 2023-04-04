@@ -50,17 +50,31 @@
                     'income': income.value
             };
 
-        // envoi d'une requête fetch avec les inputs avec la méthode POST
+            // envoi d'une requête fetch avec les inputs avec la méthode POST
             fetch(`script.php`,/* options de la requête fetch */{
                 method: "POST",
-                headers: {"Content-type": "application/x-www-form-urlencoded; charset=UTF-8"},
-                body: Object.entries(data).map(([k,v])=>{return k+'='+v}).join('&')
+                header: {"Content-type": "application/json; charset=UTF-8"},
+                /* on chaînifie l'objet JSON */
+                body: JSON.stringify(data)
             })
-                // définition du type de données pour l'envoi (json)
+                // définition du type de données pour la réponse (chaîne)
                 .then (response => response.text())
                 // action avec le résultat de la requête <=> avec ce qui s'est passé dans script.php
                 .then (result => document.getElementById('msg').innerHTML = result);
         });
+
+        // Autre version :
+        //     fetch(`script.php`,{
+        //         method: "POST",
+        //         headers: {
+        //             /* $_POST ne reconnaît que ce format de données (multipart/form-data)*/
+        //             "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+        //         },
+        //         body: Object.entries(data).map(([k,v])=>{return k+'='+v}).join('&')
+        //     })
+        //         .then (response => response.text())
+        //         .then (result => document.getElementById('msg').innerHTML = result);
+        // });
     </script>
 </body>
 </html>
