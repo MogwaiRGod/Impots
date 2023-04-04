@@ -20,7 +20,7 @@ class Impot {
         return $this->taux*$this->revenu;
     }
 
-    // méthode retournant une chaîne
+    // méthode retournant un message indiquant le montant à payer : chaîne
     public function afficheImpot() {
         $impot = $this->calculImpot();
         return "M./Mme " . $this->nom . ", votre impôt est de " . $impot . "€"; 
