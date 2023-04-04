@@ -70,6 +70,7 @@
         //             /* $_POST ne reconnaît que ce format de données (multipart/form-data)*/
         //             "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
         //         },
+        //         // on transforme à la main l'objet JSON en tableau associatif PHP
         //         body: Object.entries(data).map(([k,v])=>{return k+'='+v}).join('&')
         //     })
         //         .then (response => response.text())
