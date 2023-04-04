@@ -18,9 +18,7 @@ class Impot {
         if($this->revenu < 15000) {
             return self::TAUXINF*$this->revenu;
         }
-        else {
-            return self::TAUXSUP*$this->revenu;
-        }
+        return self::TAUXSUP*$this->revenu;
     }
 
     // méthode retournant une chaîne
