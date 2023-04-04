@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Impots</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Diane">
+</head>
+
+<body>
+    <div id="container">
+        <!-- Formulaire client -->
+        <form>
+            <div>
+                <label for="name">Nom de famille</label>
+                <input type="text" placeholder="Votre nom" id="name" required>
+            </div>
+            <div>
+                <label for="income">Total de vos revenus de l'année dernière</label>
+                <input type="number" id="income" required>
+            </div>
+            <button id="send">OK</button>
+        </form>
+        <!-- Va contenir le montant de l'imôt à payer -->
+        <p id="msg"></p>
+    </div>
+
+    <script>
+        // récupération des inputs
+        let name = document.getElementById('name');
+        let income = document.getElementById('income');
+
+        send.addEventListener("click", function(e) {
+            e.preventDefault();
+
+            // données à envoyer
+            let data = {
+                    'name': name.value,
+                    'income': income.value
+            };
+
+        // envoi d'une requête fetch avec les inputs avec la méthode POST
+            fetch(`script.php`,/* options de la requête fetch */{
+                method: "POST",
+                headers: {"Content-type": "application/x-www-form-urlencoded; charset=UTF-8"},
+                body: Object.entries(data).map(([k,v])=>{return k+'='+v}).join('&')
+            })
+                // définition du type de données pour l'envoi (json)
+                .then (response => response.text())
+                // action avec le résultat de la requête <=> avec ce qui s'est passé dans script.php
+                .then (result => document.getElementById('msg').innerHTML = result);
+        });
+    </script>
+</body>
+</html>
